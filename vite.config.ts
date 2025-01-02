@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
 
-// https://vitejs.dev/config/
+// Load environment variables from .env file
+dotenv.config();
+
 export default defineConfig({
   plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-  },
   server: {
-    port: parseInt(process.env.PORT) || 2005, // Use the PORT environment variable or default to 5173
+    port: parseInt(process.env.PORT || '3000', 10),
+    host: true, // Required for Docker/Render deployment
   },
 });
