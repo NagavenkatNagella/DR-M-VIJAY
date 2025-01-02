@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, BookOpen, GraduationCap, Linkedin, Youtube, Search, Database, BookMarked } from 'lucide-react';
+import { Award, BookOpen, GraduationCap, Linkedin, Youtube, Search, Database, BookMarked,Book } from 'lucide-react';
 import image from './image.jpg';  // Import the image
 
 const Hero = () => {
@@ -89,12 +89,16 @@ const Hero = () => {
                 <h3 className="text-xl font-bold">8+ SCI Papers</h3>
               </div>
               <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
-                <GraduationCap size={40} className="mx-auto mb-2" />
-                <h3 className="text-xl font-bold"> Doctor of Philosophy (Ph.D), Anna University </h3>
+                <Book size={40} className="mx-auto mb-2" /> {/* Added Book Icon */}
+                <h3 className="text-xl font-bold">22+ IEEE Publications</h3>
               </div>
               <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
                 <Award size={40} className="mx-auto mb-2" />
                 <h3 className="text-xl font-bold">4+ Patents</h3>
+              </div>
+              <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
+                <GraduationCap size={40} className="mx-auto mb-2" />
+                <h3 className="text-xl font-bold"> Doctor of Philosophy (Ph.D), Anna University </h3>
               </div>
             </div>
           </div>
