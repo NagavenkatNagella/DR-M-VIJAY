@@ -1,5 +1,4 @@
-import React from 'react';
-import { Briefcase, Award, GraduationCap } from 'lucide-react';
+import { Briefcase, Award, GraduationCap, Users } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
@@ -7,6 +6,7 @@ const Experience = () => {
       title: "Associate Professor",
       organization: "Kalasalingam Academy of Research and Education",
       responsibilities: [
+        "12 years of academic experience in engineering education",
         "Designing and delivering advanced courses in Data Science, ML, and Image Processing",
         "Supervising student research projects in healthcare analytics",
         "Leading academic and technical events organization",
@@ -15,7 +15,7 @@ const Experience = () => {
     },
     {
       title: "Research Fellow",
-      organization: "INTI International University",
+      organization: "INTI International University, Malaysia (2025-Present)",
       responsibilities: [
         "Collaborating on research in AI, Machine Learning and deep learning",
         "Publishing research papers in prestigious journals",
@@ -34,25 +34,28 @@ const Experience = () => {
     }
   ];
 
-  const certifications = [
+  const memberships = [
     {
-      name: "AWS Certified Solutions Architect",
-      description: "Designing scalable applications on AWS cloud platform"
+      category: "IEEE Member",
+      details: "IEEE Computer Society (CS); IEEE Systems, Man, and Cybernetics Society (SMC)"
     },
     {
-      name: "Azure AI Engineer Associate",
-      description: "Deploying AI models with Azure-based solutions"
-    },
+      category: "Professional Society",
+      details: "Member, Soft Computing Research Society (SCRS)"
+    }
+  ];
+
+  const researchSupervision = [
     {
-      name: "Professional Data Engineer",
-      description: "Implementing data processing systems on Google Cloud"
+      category: "Research Supervision",
+      details: "Guiding 7 research scholars (including 1 NRI)"
     }
   ];
 
   return (
     <section id="experience" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Experience & Education</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">Experience & Research</h2>
 
         <div className="grid md:grid-cols-2 gap-12">
           <div>
@@ -83,22 +86,33 @@ const Experience = () => {
                   <GraduationCap className="w-6 h-6 text-blue-600" />
                   <h3 className="text-2xl font-semibold">Education</h3>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-xl">
+                <div className="bg-gray-50 p-6 rounded-xl mb-8">
                   <h4 className="text-xl font-semibold mb-2">Ph.D. in Computer Science</h4>
                   <p className="text-blue-600">Anna University, 2022</p>
                 </div>
+
+                <div className="flex items-center gap-3 mb-6">
+                  <Users className="w-6 h-6 text-blue-600" />
+                  <h3 className="text-2xl font-semibold">Research Supervision</h3>
+                </div>
+                {researchSupervision.map((item, index) => (
+                  <div key={index} className="bg-blue-50 p-6 rounded-xl mb-8">
+                    <h4 className="font-semibold mb-2">{item.category}</h4>
+                    <p className="text-gray-700">{item.details}</p>
+                  </div>
+                ))}
               </div>
 
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Award className="w-6 h-6 text-blue-600" />
-                  <h3 className="text-2xl font-semibold">Certifications</h3>
+                  <h3 className="text-2xl font-semibold">Professional Memberships</h3>
                 </div>
                 <div className="space-y-4">
-                  {certifications.map((cert, index) => (
+                  {memberships.map((membership, index) => (
                     <div key={index} className="bg-gray-50 p-6 rounded-xl">
-                      <h4 className="font-semibold mb-2">{cert.name}</h4>
-                      <p className="text-gray-600">{cert.description}</p>
+                      <h4 className="font-semibold mb-2">{membership.category}</h4>
+                      <p className="text-gray-600">{membership.details}</p>
                     </div>
                   ))}
                 </div>

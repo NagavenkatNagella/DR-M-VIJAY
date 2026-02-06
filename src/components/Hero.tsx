@@ -1,9 +1,13 @@
-import React from 'react';
-import { Award, BookOpen, GraduationCap, Linkedin, Youtube, Search, Database, BookMarked,Book } from 'lucide-react';
+import { Award, BookOpen, GraduationCap, Linkedin, Youtube, Search, Database, BookMarked, Book, Users } from 'lucide-react';
 import image from './image.jpg';  // Import the image
 
 const Hero = () => {
   const profiles = [
+    {
+      icon: <BookOpen size={20} />,
+      name: 'Website',
+      url: 'https://dr-vijayprofessor.onrender.com/'
+    },
     {
       icon: <Linkedin size={20} />,
       name: 'LinkedIn',
@@ -33,6 +37,11 @@ const Hero = () => {
       icon: <BookMarked size={20} />,
       name: 'ORCID',
       url: 'https://orcid.org/0000-0003-3337-815X'
+    },
+    {
+      icon: <Search size={20} />,
+      name: 'Web of Science',
+      url: 'https://www.webofscience.com/wos/author/record/AAG-3435-2021'
     }
   ];
 
@@ -49,16 +58,15 @@ const Hero = () => {
               />
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">Dr. VIJAY M</h1>
-                <h2 className="text-xl md:text-2xl text-blue-300 mb-6">Associate Professor & IEEE Member</h2>
-                <h2 className="text-xl md:text-2xl text-blue-300 mb-6">Research Fellow,INTI University, Malaysia</h2>
-
+                <h2 className="text-xl md:text-2xl text-blue-300 mb-2">Associate Professor & IEEE Member</h2>
+                <h2 className="text-lg md:text-xl text-blue-200 mb-6">Research Fellow (2025-Present), INTI University, Malaysia</h2>
               </div>
             </div>
             <p className="text-lg mb-8">
-              A distinguished academic and researcher specializing in AI, Machine Learning, 
+              A distinguished academic and researcher with 12 years of experience specializing in AI, Machine Learning,
               Data Science, and Cybersecurity at Kalasalingam Academy of Research and Education.
             </p>
-            
+
             <div className="bg-blue-800/50 rounded-xl p-6 backdrop-blur-sm">
               <h3 className="text-xl font-semibold mb-4">Professional Profiles</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -75,6 +83,16 @@ const Hero = () => {
                   </a>
                 ))}
               </div>
+              <div className="mt-8 flex flex-col md:flex-row gap-6">
+                <div className="bg-blue-800/50 rounded-xl p-6 backdrop-blur-sm flex-1">
+                  <h3 className="text-xl font-semibold mb-4">Contact Details</h3>
+                  <div className="space-y-2 text-sm">
+                    <p><span className="text-blue-300 font-semibold">Email:</span> vijaymepcoece@gmail.com</p>
+                    <p><span className="text-blue-300 font-semibold">Official:</span> vijay.m@klu.ac.in</p>
+                    <p><span className="text-blue-300 font-semibold">Phone:</span> +91 9500372833</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -86,19 +104,23 @@ const Hero = () => {
               </div>
               <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
                 <BookOpen size={40} className="mx-auto mb-2" />
-                <h3 className="text-xl font-bold">8+ SCI Papers</h3>
+                <h3 className="text-xl font-bold">10 SCI Papers</h3>
               </div>
               <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
-                <Book size={40} className="mx-auto mb-2" /> {/* Added Book Icon */}
-                <h3 className="text-xl font-bold">22+ IEEE Publications</h3>
+                <Book size={40} className="mx-auto mb-2" />
+                <h3 className="text-xl font-bold">27 IEEE Publications</h3>
               </div>
               <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
                 <Award size={40} className="mx-auto mb-2" />
-                <h3 className="text-xl font-bold">4+ Patents</h3>
+                <h3 className="text-xl font-bold">6 Patents</h3>
               </div>
               <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
                 <GraduationCap size={40} className="mx-auto mb-2" />
-                <h3 className="text-xl font-bold"> Doctor of Philosophy (Ph.D), Anna University </h3>
+                <h3 className="text-xl font-bold">Ph.D. Anna University</h3>
+              </div>
+              <div className="bg-blue-800/50 backdrop-blur-sm p-6 rounded-lg text-center">
+                <Users size={40} className="mx-auto mb-2" />
+                <h3 className="text-xl font-bold">7 Scholars Guiding</h3>
               </div>
             </div>
           </div>
