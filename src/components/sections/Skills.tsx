@@ -1,69 +1,121 @@
-import React from 'react';
-import { Code, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Code2, Brain, BarChart3, Globe, Sparkles, MessageSquare, Terminal, Database, ShieldCheck, PenTool, Lightbulb, Users } from 'lucide-react';
 
 const Skills = () => {
-  const technicalSkills = [
-    { category: "Programming", skills: ["Python", "R", "MATLAB", "C++"] },
-    { category: "AI & ML", skills: ["TensorFlow", "PyTorch", "Scikit-learn", "Deep Learning Models"] },
-    { category: "Data Analysis", skills: ["Pandas", "NumPy", "Tableau", "Power BI"] },
-    { category: "Web & Database", skills: ["HTML/CSS", "JavaScript", "SQL", "MongoDB"] },
+  const technicalCategories = [
+    {
+      title: "AI & Data Science",
+      icon: <Brain className="text-blue-400" />,
+      groups: [
+        { name: "Programming", items: ["Python", "R", "MATLAB", "C++"] },
+        { name: "AI & ML", items: ["TensorFlow", "PyTorch", "Scikit-learn", "CNN/RNN", "Deep Learning Models"] },
+        { name: "Data Analysis", items: ["NumPy", "Pandas", "Tableau", "Power BI", "Big Data Analytics"] }
+      ]
+    },
+    {
+      title: "Cybersecurity & Web",
+      icon: <ShieldCheck className="text-emerald-400" />,
+      groups: [
+        { name: "Security", items: ["Network Security", "Ethical Hacking", "Cryptography", "Intrusion Detection"] },
+        { name: "Development", items: ["HTML/CSS", "JavaScript", "SQL", "MongoDB"] },
+        { name: "Tools", items: ["Vite", "Git", "LaTeX", "Shell Scripting"] }
+      ]
+    }
   ];
 
-  const nonTechnicalSkills = [
-    "Event Planning & Management",
-    "Public Speaking & Presentation",
-    "Technical Writing & Research",
-    "Team Leadership & Mentorship",
-    "Curriculum Design",
-    "Problem-Solving"
+  const leadershipSkills = [
+    {
+      title: "Academic Leadership",
+      icon: <Users className="text-purple-400" />,
+      items: ["Curriculum Design", "Mentorship", "Research Supervision", "Higher Ed Leadership"]
+    },
+    {
+      title: "Event & Strategy",
+      icon: <Lightbulb className="text-orange-400" />,
+      items: ["Hackathons", "Workshops", "International Conferences", "Strategic Planning"]
+    },
+    {
+      title: "Professional Skills",
+      icon: <PenTool className="text-pink-400" />,
+      items: ["Public Speaking", "Technical Writing", "Problem-Solving", "Research Analysis"]
+    }
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Skills & Expertise</h2>
+    <section id="skills" className="py-20 relative scroll-mt-32">
+      <div className="flex items-center gap-4 mb-16">
+        <div className="h-14 w-14 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-500 glass border-white/10 shadow-2xl shadow-purple-500/10">
+          <Sparkles size={28} />
+        </div>
+        <div>
+          <p className="section-subheading">Technical & Soft Skills</p>
+          <h2 className="section-heading">Expertise & Skillset</h2>
+        </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <Code className="w-6 h-6 text-blue-600" />
-              <h3 className="text-2xl font-semibold">Technical Skills</h3>
-            </div>
-            <div className="space-y-6">
-              {technicalSkills.map((category, index) => (
-                <div key={index}>
-                  <h4 className="font-semibold mb-3 text-gray-700">{category.category}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+      <div className="space-y-20">
+        {/* Technical Mastery Grid */}
+        <div className="grid lg:grid-cols-2 gap-8">
+          {technicalCategories.map((cat, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass-card p-8 relative overflow-hidden group"
+            >
+              <div className="flex items-center gap-4 mb-10">
+                <div className="p-3 rounded-xl bg-white/5 text-white/80">
+                  {cat.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-white tracking-tight">{cat.title}</h3>
+              </div>
+
+              <div className="grid sm:grid-cols-3 gap-8">
+                {cat.groups.map((group, gIdx) => (
+                  <div key={gIdx} className="space-y-6">
+                    <h4 className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">{group.name}</h4>
+                    <div className="flex flex-col gap-3">
+                      {group.items.map((skill, sIdx) => (
+                        <div key={sIdx} className="flex items-center gap-2 group/skill">
+                          <div className="h-1.5 w-1.5 rounded-full bg-blue-500/40 group-hover/skill:bg-blue-400 transition-colors" />
+                          <span className="text-sm text-white/60 group-hover/skill:text-white transition-colors">{skill}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <Users className="w-6 h-6 text-blue-600" />
-              <h3 className="text-2xl font-semibold">Non-Technical Skills</h3>
-            </div>
-            <div className="grid grid-cols-1 gap-4">
-              {nonTechnicalSkills.map((skill, index) => (
-                <div
-                  key={index}
-                  className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                >
-                  {skill}
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Leadership & Soft Skills Row */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {leadershipSkills.map((skill, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className="glass p-8 rounded-3xl border-white/5 hover:bg-white/[0.08] transition-all group"
+            >
+              <div className="h-12 w-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                {idx === 0 && <Users className="text-purple-400" />}
+                {idx === 1 && <Lightbulb className="text-orange-400" />}
+                {idx === 2 && <PenTool className="text-pink-400" />}
+              </div>
+              <h4 className="text-lg font-bold text-white mb-6 tracking-tight">{skill.title}</h4>
+              <div className="flex flex-wrap gap-2">
+                {skill.items.map((item, iIdx) => (
+                  <span key={iIdx} className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs text-white/50 group-hover:text-white/80 transition-colors">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

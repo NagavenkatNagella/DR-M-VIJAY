@@ -1,124 +1,181 @@
-import { Briefcase, Award, GraduationCap, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Briefcase as BriefcaseIcon, GraduationCap as GradIcon, Award as AwardIcon, Users as UsersIcon, Calendar as CalendarIcon } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
     {
       title: "Associate Professor",
       organization: "Kalasalingam Academy of Research and Education",
+      period: "2012 - Present",
       responsibilities: [
-        "12 years of academic experience in engineering education",
-        "Designing and delivering advanced courses in Data Science, ML, and Image Processing",
-        "Supervising student research projects in healthcare analytics",
-        "Leading academic and technical events organization",
-        "Collaborating with industry experts"
+        "12+ years of academic experience in engineering education and research mentorship",
+        "Designing and delivering specialized courses in Data Science, Machine Learning, and Computer Vision",
+        "Directing research initiatives and fostering industry-academic collaborations",
+        "Organizing high-impact technical workshops, hackathons, and global conferences",
+        "spearheading Student Research Group initiatives for product development"
       ]
     },
     {
       title: "Research Fellow",
-      organization: "INTI International University, Malaysia (2025-Present)",
+      organization: "INTI International University, Malaysia",
+      period: "2025 - Present",
       responsibilities: [
-        "Collaborating on research in AI, Machine Learning and deep learning",
-        "Publishing research papers in prestigious journals",
-        "Mentoring research students"
+        "Conducting advanced research in AI-driven healthcare solutions and IoT systems",
+        "Collaborating with international research groups for high-impact publications",
+        "Mentoring post-graduate students in deep learning methodologies"
       ]
     },
     {
       title: "IEEE Coordinator",
       organization: "IEEE Student Branch",
+      period: "Various Terms",
       responsibilities: [
-        "Organizing technical events and workshops",
-        "Promoting IEEE membership and activities",
-        "Facilitating industry-academia collaboration",
-        "Managing resources and driving initiatives"
+        "Coordinating technical competitions and professional development events",
+        "Promoting global IEEE standards and networking opportunities for students",
+        "Managing resources and driving innovative research initiatives within the branch"
       ]
     }
   ];
 
-  const memberships = [
+  const education = [
     {
-      category: "IEEE Member",
-      details: "IEEE Computer Society (CS); IEEE Systems, Man, and Cybernetics Society (SMC)"
+      degree: "Ph.D. in Computer Science & Engineering",
+      inst: "Anna University, Chennai",
+      year: "2022",
+      detail: "Specialized in Advanced AI & ML methodologies"
     },
     {
-      category: "Professional Society",
-      details: "Member, Soft Computing Research Society (SCRS)"
-    }
-  ];
-
-  const researchSupervision = [
+      degree: "M.E. in Communication Systems",
+      inst: "Mepco Schlenk Engineering College",
+      year: "2012",
+      detail: "Graduated with 8.35 CGPA"
+    },
     {
-      category: "Research Supervision",
-      details: "Guiding 7 research scholars (including 1 NRI)"
+      degree: "B.E. in Electronics & Communication",
+      inst: "Anna University",
+      year: "2010",
+      detail: "Graduated with 78%"
     }
   ];
 
   return (
-    <section id="experience" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Experience & Research</h2>
+    <section id="experience" className="py-20 relative scroll-mt-32">
+      <div className="flex items-center gap-4 mb-16">
+        <div className="h-14 w-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 glass border-white/10 shadow-2xl shadow-indigo-500/10">
+          <BriefcaseIcon size={28} />
+        </div>
+        <div>
+          <p className="section-subheading">Career & Academics</p>
+          <h2 className="section-heading">Experience & Academic Journey</h2>
+        </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <Briefcase className="w-6 h-6 text-blue-600" />
-              <h3 className="text-2xl font-semibold">Work Experience</h3>
+      <div className="grid lg:grid-cols-3 gap-12">
+        {/* Timeline Column */}
+        <div className="lg:col-span-2 space-y-10">
+          {experiences.map((exp, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="relative pl-10 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-gradient-to-b before:from-blue-500 before:to-transparent"
+            >
+              <div className="absolute left-[-6px] top-2 h-3 w-3 rounded-full bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.6)]" />
+
+              <div className="glass-card p-8 group hover:border-blue-500/20 transition-all duration-500">
+                <div className="flex flex-wrap items-center justify-between gap-6 mb-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{exp.title}</h3>
+                    <p className="text-blue-400/80 font-semibold text-lg">{exp.organization}</p>
+                  </div>
+                  <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-white/40 group-hover:text-white/80 transition-colors">
+                    <CalendarIcon size={14} />
+                    {exp.period}
+                  </div>
+                </div>
+
+                <ul className="grid sm:grid-cols-1 gap-4">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <li key={rIdx} className="flex gap-4 text-sm text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">
+                      <div className="h-1.5 w-1.5 rounded-full bg-blue-500/30 mt-2 shrink-0 group-hover:bg-blue-400 transition-colors" />
+                      {resp}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Sidebar Column */}
+        <div className="space-y-8">
+          {/* Education */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-8 border-indigo-500/20"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <GradIcon className="text-indigo-400" size={24} />
+              <h3 className="text-xl font-bold text-white tracking-tight">Education</h3>
             </div>
-            <div className="space-y-8">
-              {experiences.map((exp, index) => (
-                <div key={index} className="relative pl-6 border-l-2 border-blue-200">
-                  <div className="absolute -left-2 top-0 w-4 h-4 bg-blue-600 rounded-full"></div>
-                  <h4 className="text-xl font-semibold mb-2">{exp.title}</h4>
-                  <p className="text-blue-600 mb-4">{exp.organization}</p>
-                  <ul className="list-disc list-inside space-y-2 text-gray-600">
-                    {exp.responsibilities.map((resp, respIndex) => (
-                      <li key={respIndex}>{resp}</li>
-                    ))}
-                  </ul>
+            <div className="space-y-6">
+              {education.map((edu, idx) => (
+                <div key={idx} className="relative pl-6 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-white/10 group">
+                  <div className="absolute left-[-3px] top-2 h-1.5 w-1.5 rounded-full bg-white/20 group-hover:bg-indigo-400 transition-colors" />
+                  <h4 className="font-bold text-white leading-tight group-hover:text-indigo-400 transition-colors">{edu.degree}</h4>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest mt-1">{edu.inst} • {edu.year}</p>
+                  <p className="text-xs text-white/50 mt-2">{edu.detail}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div>
-            <div className="space-y-12">
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <GraduationCap className="w-6 h-6 text-blue-600" />
-                  <h3 className="text-2xl font-semibold">Education</h3>
-                </div>
-                <div className="bg-gray-50 p-6 rounded-xl mb-8">
-                  <h4 className="text-xl font-semibold mb-2">Ph.D. in Computer Science</h4>
-                  <p className="text-blue-600">Anna University, 2022</p>
-                </div>
-
-                <div className="flex items-center gap-3 mb-6">
-                  <Users className="w-6 h-6 text-blue-600" />
-                  <h3 className="text-2xl font-semibold">Research Supervision</h3>
-                </div>
-                {researchSupervision.map((item, index) => (
-                  <div key={index} className="bg-blue-50 p-6 rounded-xl mb-8">
-                    <h4 className="font-semibold mb-2">{item.category}</h4>
-                    <p className="text-gray-700">{item.details}</p>
-                  </div>
-                ))}
+          {/* Memberships */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-8 border-emerald-500/20"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <AwardIcon className="text-emerald-400" size={24} />
+              <h3 className="text-xl font-bold text-white tracking-tight">Memberships</h3>
+            </div>
+            <div className="space-y-4">
+              <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10 group hover:bg-emerald-500/10 transition-colors">
+                <h4 className="font-bold text-white text-sm mb-1 group-hover:text-emerald-400">IEEE Member</h4>
+                <p className="font-medium text-[10px] text-white/30 uppercase tracking-widest">CS & SMC Societies</p>
               </div>
-
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <Award className="w-6 h-6 text-blue-600" />
-                  <h3 className="text-2xl font-semibold">Professional Memberships</h3>
-                </div>
-                <div className="space-y-4">
-                  {memberships.map((membership, index) => (
-                    <div key={index} className="bg-gray-50 p-6 rounded-xl">
-                      <h4 className="font-semibold mb-2">{membership.category}</h4>
-                      <p className="text-gray-600">{membership.details}</p>
-                    </div>
-                  ))}
-                </div>
+              <div className="p-4 rounded-xl bg-white/5 border border-white/10 group hover:bg-white/[0.08] transition-colors">
+                <h4 className="font-bold text-white text-sm mb-1">Soft Computing Research Society</h4>
+                <p className="font-medium text-[10px] text-white/30 uppercase tracking-widest">Member ID: 2289</p>
               </div>
             </div>
-          </div>
+          </motion.div>
+
+          {/* Research Supervision */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-8 border-orange-500/20"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <UsersIcon className="text-orange-400" size={24} />
+              <h3 className="text-xl font-bold text-white tracking-tight">Supervision</h3>
+            </div>
+            <div className="flex items-center justify-between p-6 rounded-2xl bg-orange-500/5 border border-orange-500/10 shadow-inner">
+              <span className="text-white/40 text-sm font-medium">Research Scholars</span>
+              <div className="flex flex-col items-end">
+                <span className="text-4xl font-black text-orange-400 tracking-tighter">07</span>
+                <span className="text-[10px] text-orange-400/40 uppercase font-bold tracking-widest mt-1">Supervising</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
