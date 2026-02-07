@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -8,10 +9,18 @@ import Publications from './components/Publications';
 import Projects from './components/Projects';
 import Patents from './components/Patents';
 import CursorTracker from './components/CursorTracker';
+import SplashScreen from './components/SplashScreen';
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      <AnimatePresence>
+        {showSplash && (
+          <SplashScreen onFinish={() => setShowSplash(false)} />
+        )}
+      </AnimatePresence>
       <CursorTracker />
       {/* Background Elements */}
       <div className="fixed inset-0 bg-mesh -z-10" />
