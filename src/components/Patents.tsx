@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Lightbulb, Shield, Cpu, Database, Monitor, Plane, Award, FileText } from 'lucide-react';
+import { Lightbulb, Shield, Cpu, Database, Monitor, Plane, Award, FileText, ExternalLink } from 'lucide-react';
 
 const Patents = () => {
   const patents = [
@@ -7,7 +7,8 @@ const Patents = () => {
       icon: <Cpu className="text-blue-400" />,
       title: "Wind-Powered Wireless Charging System for Electric Vehicles",
       status: "Granted",
-      type: "International Design Patent"
+      type: "International Design Patent",
+      certificateUrl: "/assets/patent-wind-power.pdf"
     },
     {
       icon: <Database className="text-purple-400" />,
@@ -94,6 +95,19 @@ const Patents = () => {
               {patent.status === 'Granted' && <Award size={12} />}
               {patent.status}
             </div>
+
+            {patent.certificateUrl && (
+              <a 
+                href={patent.certificateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 flex items-center gap-2 text-[10px] font-bold text-blue-400 hover:text-blue-300 transition-colors group/link uppercase tracking-wider"
+              >
+                <FileText size={12} />
+                <span>View Certificate</span>
+                <ExternalLink size={10} className="opacity-40 group-hover/link:opacity-100 transition-opacity" />
+              </a>
+            )}
           </motion.div>
         ))}
       </div>

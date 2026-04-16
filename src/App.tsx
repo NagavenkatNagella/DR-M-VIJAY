@@ -7,6 +7,7 @@ import Skills from './components/sections/Skills';
 import Experience from './components/sections/Experience';
 import Publications from './components/Publications';
 import Projects from './components/Projects';
+import MsmeAchievement from './components/MsmeAchievement';
 import Patents from './components/Patents';
 import CursorTracker from './components/CursorTracker';
 import SplashScreen from './components/SplashScreen';
@@ -42,6 +43,7 @@ function App() {
               <Skills />
               <Experience />
               <Publications />
+              <MsmeAchievement />
               <Projects />
               <Patents />
             </div>
